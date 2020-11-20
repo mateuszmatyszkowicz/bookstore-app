@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client/core";
-import appConfig from "../consts/app-config";
+import appConfig from "../constants/app-config";
 
 const graphqlClient = new ApolloClient({
   uri: appConfig.graphqlServerUrl,

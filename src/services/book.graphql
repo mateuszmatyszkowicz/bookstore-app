@@ -1,0 +1,33 @@
+query Books {
+  books {
+    bookId
+    title
+    author
+    price
+  }
+}
+
+query Book($bookId: Int!) {
+  book(bookId: $bookId) {  
+    bookId
+    title
+    author 
+  	price
+  }
+}
+
+mutation CreateBook($title: String!, $author: String!, $price: Float! ) {
+  createBook(title: $title, author: $author, price: $price) {
+    title
+    author
+    price
+  }
+}
+
+mutation EditBook($bookId:Int!,$title: String!, $author: String!, $price: Float! ) {
+  editBook(bookId: $bookId title: $title, author: $author, price: $price) {
+    title
+    author
+    price
+  }
+}

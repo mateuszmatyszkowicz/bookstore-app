@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams, Redirect, Link } from "react-router-dom";
 import BookForm, {
   BookFormValues,
@@ -12,6 +12,7 @@ type EditBookPageParams = {
 
 const EditBookPage = () => {
   const { id } = useParams<EditBookPageParams>();
+  const [pageNotFound, setPageNotFound] = useState(false);
   const bookId = parseInt(id); // can wrongly return book ex. "1a123" -> "1"
   const { data, loading: queryLoading, error: queryError } = useBookQuery({
     variables: { bookId },
@@ -33,6 +34,18 @@ const EditBookPage = () => {
     },
     [bookId, editBook]
   );
+
+  useEffect(() => {
+    if (id) {
+      if (id !== bookId.toString()) {
+        setPageNotFound(true);
+      }
+    }
+  }, [id, bookId]);
+
+  if (pageNotFound) {
+    return <Redirect to={"/not-found"} />;
+  }
 
   if (updatedBook) {
     return <Redirect to={"/"} />;

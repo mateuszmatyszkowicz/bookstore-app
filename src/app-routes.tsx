@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NotFoundPage from "./pages/not-found/not-found.page";
 
+const NotFoundPage = lazy(() => import("./pages/not-found/not-found.page"));
 const ListBooksPage = lazy(() => import("./pages/list-books/list-books.page"));
 const EditBookPage = lazy(() => import("./pages/edit-book/edit-book.page"));
 const CreateBookPage = lazy(

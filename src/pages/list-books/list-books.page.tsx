@@ -34,8 +34,9 @@ const ListBooksPage = () => {
   const selectedCount = Object.values(selected).length;
   return (
     <>
+      <h1>Book store</h1>
       <div>
-        Book store | selected ({selectedCount}), total price:
+        selected ({selectedCount}), total price:{" "}
         {displayAsCurrency(currentPrice)}
       </div>
       <div>
@@ -46,7 +47,7 @@ const ListBooksPage = () => {
         )}
       </div>
       <div>
-        <Link to={"/create"} children={'Create'} />
+        <Link to={"/create"} children={"Create"} />
       </div>
     </>
   );
